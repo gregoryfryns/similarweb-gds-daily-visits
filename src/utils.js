@@ -11,6 +11,8 @@ if (typeof(require) !== 'undefined') {
  * @param {?object} params - object that contains the URL parameters and their values
  * @return {object} - Results, or null if the API call wasn't successful
  */
+
+/* istanbul ignore next */
 function retrieveOrGet(url, params) {
   if (typeof params === 'undefined') { params = {}; }
 
@@ -48,6 +50,8 @@ function retrieveOrGet(url, params) {
  * @param {object} params - object that contains the URL parameters and their values
  * @return {object} Results returned by the API, or null if the API call wasn't successful
  */
+
+/* istanbul ignore next */
 function httpGet(url, params) {
   var urlParams = Object.keys(params).map(function(k) {return encodeURIComponent(k) + '=' + encodeURIComponent(params[k]); }).join('&');
   var fullUrl = url + (urlParams.length > 0 ? '?' + urlParams : '');
