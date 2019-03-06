@@ -1,4 +1,4 @@
-/* global DataStudioApp */
+/* global DataStudioApp, Session */
 
 if (typeof(require) !== 'undefined') {
   var retrieveOrGet = require('./utils.js')['retrieveOrGet'];
@@ -245,7 +245,12 @@ function getData(request) {
 
 // eslint-disable-next-line no-unused-vars
 function isAdminUser() {
-  return true;
+  var adminUsersWhitelist = [
+    'gregory.fryns@similarweb.com',
+    'gregory.fryns@gmail.com'
+  ];
+  var email = Session.getEffectiveUser().getEmail();
+  return adminUsersWhitelist.indexOf(email) > -1;
 }
 
 // eslint-disable-next-line no-unused-vars
