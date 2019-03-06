@@ -5,6 +5,7 @@
   "main": "Code.js",
   "scripts": {
     "push": "cd src;clasp push;cd -",
+    "open": "cd src;clasp open;cd -",
     "test": "jest",
     "coverage": "jest --coverage"
   },
