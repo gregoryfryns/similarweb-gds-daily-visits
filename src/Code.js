@@ -80,6 +80,8 @@ function getFields() {
     .setName('Total Page Views')
     .setDescription('SimilarWeb estimated number of pages views')
     .setType(types.NUMBER)
+    .setIsReaggregatable(true)
+    .setAggregation(aggregations.SUM)
     .setIsHidden(true);
 
   fields.newMetric()
@@ -87,13 +89,16 @@ function getFields() {
     .setName('Pages per Visit')
     .setDescription('Average number of pages visited per session')
     .setType(types.NUMBER)
-    .setFormula('sum($page_views)/sum($visits)');
+    .setFormula('sum($page_views)/sum($visits)')
+    .setIsReaggregatable(false);
 
   fields.newMetric()
     .setId('visits_duration')
     .setName('Total Visits Duration')
     .setDescription('SimilarWeb estimated amount of time spent on domain')
     .setType(types.NUMBER)
+    .setIsReaggregatable(true)
+    .setAggregation(aggregations.SUM)
     .setIsHidden(true);
 
   fields.newMetric()
@@ -101,13 +106,16 @@ function getFields() {
     .setName('Avg. Visit Duration')
     .setDescription('Average time spent per visit, in seconds')
     .setType(types.DURATION)
-    .setFormula('sum($visits_duration)/sum($visits)');
+    .setFormula('sum($visits_duration)/sum($visits)')
+    .setIsReaggregatable(false);
 
   fields.newMetric()
     .setId('bounced_visits')
     .setName('Bounced Visits')
     .setDescription('SimilarWeb estimated number of bounced visits')
     .setType(types.NUMBER)
+    .setIsReaggregatable(true)
+    .setAggregation(aggregations.SUM)
     .setIsHidden(true);
 
   fields.newMetric()
@@ -115,7 +123,8 @@ function getFields() {
     .setName('Bounce rate')
     .setDescription('Rate of visits for which no other interaction has been detected 30 minutes after the user first accessed the page')
     .setType(types.PERCENT)
-    .setFormula('sum($bounced_visits)/sum($visits)');
+    .setFormula('sum($bounced_visits)/sum($visits)')
+    .setIsReaggregatable(false);
 
   fields.setDefaultDimension('domain');
   fields.setDefaultMetric('visits');
