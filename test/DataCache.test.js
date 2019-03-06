@@ -1,4 +1,4 @@
-import DataCache from '../src/DataCache.js';
+var DataCache = require('../src/DataCache.js')['default'];
 
 /**
  * Emulate Cache Service
